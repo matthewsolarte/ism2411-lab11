@@ -61,3 +61,28 @@ for key in customer:
 # Looping over the dict without .items() only gives the keys.
 # With .items() you get each key and its value together as a pair,
 # so you do not have to look up customer[key] to get the value.
+
+
+# Exercise 5: Lookup table
+print("\n=== Exercise 5 ===")
+tier_discounts = {"bronze": 0, "silver": .05, "gold": .10, "platinum": .15}
+discount = tier_discounts.get(customer["tier"], 0)
+purchase = 200
+final_price = purchase * (1 - discount)
+print(f"Tier: {customer['tier']}")
+print(f"Discount rate: {discount:.0%}")
+print(f"Final price: ${final_price:.2f}")
+
+
+# Exercise 6: List of dicts
+print("\n=== Exercise 6 ===")
+customers = [
+    {"name": "Alice", "tier": "platinum", "ytd_spend": 1250.00},
+    {"name": "Brian", "tier": "silver", "ytd_spend": 480.00},
+    {"name": "Carla", "tier": "bronze", "ytd_spend": 95.00},
+]
+purchase = 300
+for c in customers:
+    rate = tier_discounts.get(c["tier"], 0)
+    discount_amount = purchase * rate
+    print(f"{c['name']} | {c['tier']} | discount on ${purchase}: ${discount_amount:.2f}")
